@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+    <head>
+        <title> Technobabble Shop </title>
+        <style>
+        img{
+            width: 260px;
+        
+        }
+        input{
+            width: 20px;
+        }
+        p {
+            font-family: Verdana;
+
+        }
+        p {
+            color: forestgreen;
+        }
+        h1{
+            color: firebrick;
+        }
+        h1{
+            font-family: 'Franklin Gothic Medium';
+        }
+        p.italic{
+            font-style: italic;
+        }
+        body {
+            background-color: beige;
+        }
+        h1.solid {
+            border-style: solid;
+        }
+
+        div{
+            font-family: 'Courier New';        
+        }
+        div {
+            color: crimson;
+        }
+        h2{
+            font-family: 'Cambria';
+        }
+        h2{
+            text-align: center;
+        }
+        h2 {
+            color: darkcyan;
+        }
+        h2 {
+            font-size: 32px;
+        }
+        </style>
+        <script>
+        //Program
+        function purchase(){
+            var qty1 = document.getElementById("quantity1");
+            var qty2 = document.getElementById("quantity2");
+            var qty3 = document.getElementById("quantity3");
+            var qty4 = document.getElementById("quantity4");
+            var rprice1 = 599.99;
+            var rprice2 = 299.99;
+            var rprice3 = 129.99;
+            var rprice4 = 999.99;
+            var wprice1 = 549.99;
+            var wprice2 = 260.99;
+            var wprice3 = 100.99;
+            var wprice4 = 899.99;
+            var profit;
+            var output = document.getElementById("output");
+            var com_stotal = (wprice1 * parseInt(qty1.value)) + (wprice2 * parseInt(qty2.value)) + (wprice3 * parseInt(qty3.value)) + (wprice4 * parseInt(qty4.value));
+            var cus_stotal = (rprice1 * parseInt(qty1.value)) + (rprice2 * parseInt(qty2.value)) + (rprice3 * parseInt(qty3.value)) + (rprice4 * parseInt(qty4.value));
+            profit = cus_stotal - com_stotal;
+            console.log("The company's profits is $" + profit + ".");
+            var totalItems = parseInt(qty1.value) + parseInt(qty2.value) + parseInt(qty3.value) + parseInt(qty4.value);
+            if (totalItems == 1){
+                console.log("The amount of items sold is " + totalItems + " item.");
+            }else if (totalItems > 1){
+                console.log("The amount of items sold are " + totalItems + " items.");
+            }
+         
+            var tax = cus_stotal * 0.0875;
+            var shipping;
+            if (cus_stotal < 600){
+                shipping = 20.00;
+            }else if(cus_stotal >= 700.00 && cus_stotal <= 800.00){
+                shipping = 10.00;
+            }else{
+                shipping = 0.00;
+            }
+            var total = cus_stotal + tax + shipping;
+            var customer_info = "Your Receipt" + "<br>";
+            customer_info += "Your subtotal is $" + cus_stotal + ".<br>";
+            customer_info += "Your tax is $" + tax.toFixed(2) + ".<br>";
+            customer_info += "Your shipping cost is $" + shipping + ".<br>";
+            customer_info += "_______________<br>";
+            customer_info += "Your total is $" + total.toFixed(2) + "." ;
+            
+            output.innerHTML = customer_info;
+        
+        }
+
+        
+        </script>
+    </head>
+    <body>
+        <h2> Technobabble Shop </h2>
+       <div id = "first_product">
+            <h1 class = "solid"> HP Laptop </h1>
+            <img src= "computer.jpeg"><br>
+            <span>
+                $599.99
+            </span>
+            <p class = "italic">
+               A personalized computer for work, gaming, and normal Internet browsing from the company of HP. Contains the Windows 10 OS firmware, alongside a physical charger. 
+            </p>
+           Quantity: <input type = "text" id = "quantity1">
+        </div>
+        <div id = "second_product">
+            <h1 class = "solid"> Nintendo Switch </h1>
+            <img src = "switch.jpg"><br>
+            <span>
+                $299.99
+            </span>
+            <p class = "italic">
+                Nintendo's latest console, capable of being brought anywhere. Contains the JoyCon controllers and a dock that can connect to your TV.
+            </p>
+            Quantity: <input type = "text" id = "quantity2">
+        </div>
+        <div id = "third_product">
+            <h1 class = "solid"> Wacom Intuos Drawing Tablet </h1>
+            <img src = "tablet.jpg"><br>
+            <span>
+                $129.99
+            </span>
+            <p class = "italic">
+                A drawing tablet for either personal or professional use. Includes a drawing tablet as well as a drawing pen for use with a computer.
+            </p>
+            Quantity: <input type = "text" id = "quantity3">
+        </div>
+        <div id = "fourth_product">
+            <h1 class = "solid"> iPhone X </h1>
+            <img src = "iphone.jpg"><br>
+            <span>
+                $999.99
+            </span>
+            <p class = "italic">
+                Apple's latest iPhone product, now purely screen without a physical home button. Has newly updated specs and the latest iOS firmware.
+            </p>
+            Quantity: <input type = "text" id = "quantity4"><br>
+            <br>
+            <button onclick = "purchase()"> Purchase </button>
+            <div id = "output"> </div>
+        </div>
+    </body>
+</html>
